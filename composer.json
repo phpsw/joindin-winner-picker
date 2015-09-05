@@ -1,6 +1,6 @@
 {
-    "name": "asgrim/joindin-random-feedback-selector",
-    "description": "A little tool that selects random feedback from an event on Joind.in",
+    "name": "phpsw/joindin-winner-picker",
+    "description": "A little tool for selecting a random Joind.in event or talk comment from a range of events by hashtag",
     "require": {
         "guzzlehttp/guzzle": "^6.0"
     },
@@ -9,6 +9,10 @@
         {
             "name": "James Titcumb",
             "email": "james@asgrim.com"
+        },
+        {
+            "name": "Steve Lacey",
+            "email": "steve@stevelacey.net"
         }
     ]
 }
