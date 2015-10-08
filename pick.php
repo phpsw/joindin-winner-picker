@@ -3,6 +3,8 @@
 
 require_once __DIR__ . '/vendor/autoload.php';
 
+date_default_timezone_set('UTC');
+
 $client = new GuzzleHttp\Client();
 
 if (count($argv) < 2) {
