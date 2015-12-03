@@ -14,6 +14,10 @@
         {
             "name": "Steve Lacey",
             "email": "steve@stevelacey.net"
+        },
+        {
+            "name": "Oliver Davies",
+            "email": "oliver@oliverdavies.uk"
         }
     ],
     "autoload": {
