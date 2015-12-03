@@ -2,7 +2,8 @@
     "name": "phpsw/joindin-winner-picker",
     "description": "A little tool for selecting a random Joind.in event or talk comment from a range of events by hashtag",
     "require": {
-        "guzzlehttp/guzzle": "^6.0"
+        "guzzlehttp/guzzle": "^6.0",
+        "symfony/console": "^3.0"
     },
     "license": "MIT",
     "authors": [
