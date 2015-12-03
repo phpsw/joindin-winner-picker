@@ -24,7 +24,7 @@ composer install
 ## Usage
 
 ```sh
-./pick.php <tag> [<start date>] [<end date>]
+./app.php pick:pick <tag> [<start date>] [<end date>]
 ```
 
 ## Example
@@ -33,7 +33,7 @@ In September 2015, we ran our first raffle and let our attendees feedback
 on any of our previous events to enter:
 
 ```sh
-./pick.php phpsw 2015-01-01
+./app.php pick:pick phpsw 2015-01-01
 
 Joind.in Winner Picker!
 Selecting from #phpsw events between 2015-01-01 and 2015-08-31
