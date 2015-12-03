@@ -15,5 +15,10 @@
             "name": "Steve Lacey",
             "email": "steve@stevelacey.net"
         }
-    ]
+    ],
+    "autoload": {
+        "psr-4": {
+            "Console\\": "src/Console"
+        }
+    }
 }
