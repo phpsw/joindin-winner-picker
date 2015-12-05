@@ -135,7 +135,7 @@ class PickCommand extends Command
                 return !in_array($comment->user_display_name, $hosts);
             });
 
-            $output->writeln($event->name);
+            $output->writeln("<comment>$event->name</comment>");
             foreach ($event->entries as $comment) {
                 $output->writeln("- $comment->user_display_name - " . substr(str_replace(PHP_EOL, ' ', $comment->comment ?: '<< no comment >>'), 0, 200));
             }
