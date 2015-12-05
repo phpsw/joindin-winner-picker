@@ -24,7 +24,7 @@ composer install
 ## Usage
 
 ```sh
-./app.php pick:pick <tag> [<start date>] [<end date>]
+./app.php <tag> [<start date>] [<end date>]
 ```
 
 ## Example

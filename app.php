@@ -3,11 +3,9 @@
 
 require_once __DIR__ . '/vendor/autoload.php';
 
-use Console\Command\PickCommand;
-use Symfony\Component\Console\Application;
+use Console\PickerApplication;
 
 date_default_timezone_set('UTC');
 
-$application = new Application();
-$application->add(new PickCommand());
+$application = new PickerApplication();
 $application->run();
