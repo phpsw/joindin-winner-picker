@@ -1,8 +1,8 @@
 <?php
 
-namespace Console;
+namespace Phpsw\Console;
 
-use Console\Command\PickCommand;
+use Phpsw\Console\Command\PickCommand;
 use Symfony\Component\Console\Application;
 use Symfony\Component\Console\Input\InputInterface;
 

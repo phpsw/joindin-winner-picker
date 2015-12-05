@@ -1,6 +1,6 @@
 <?php
 
-namespace Console\Command;
+namespace Phpsw\Console\Command;
 
 use GuzzleHttp\Client as GuzzleClient;
 use Symfony\Component\Console\Command\Command;
