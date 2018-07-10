@@ -56,11 +56,11 @@ class PickCommand extends Command
     protected function configure()
     {
         $this
-          ->setName('pick:pick')
-          ->setDescription('Pick winners.')
-          ->addArgument('tag', InputArgument::REQUIRED, 'The tag to search for.')
-          ->addArgument('start', InputArgument::OPTIONAL, '', 'first day of last month')
-          ->addArgument('end', InputArgument::OPTIONAL, '', 'last day of this month')
+            ->setName('pick:pick')
+            ->setDescription('Pick winners.')
+            ->addArgument('tag', InputArgument::REQUIRED, 'The tag to search for.')
+            ->addArgument('start', InputArgument::OPTIONAL, '', 'first day of last month')
+            ->addArgument('end', InputArgument::OPTIONAL, '', 'last day of this month')
         ;
     }
 
