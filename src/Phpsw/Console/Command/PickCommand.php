@@ -7,6 +7,7 @@ use Symfony\Component\Console\Command\Command;
 use Symfony\Component\Console\Input\InputArgument;
 use Symfony\Component\Console\Input\InputInterface;
 use Symfony\Component\Console\Output\OutputInterface;
+use Symfony\Component\Console\Style\SymfonyStyle;
 
 class PickCommand extends Command
 {
@@ -45,6 +46,11 @@ class PickCommand extends Command
      */
     private $entries = [];
 
+    /**
+     * @var SymfonyStyle
+     */
+    private $io;
+
     public function __construct() {
         parent::__construct();
         $this->client = new GuzzleClient();
@@ -69,13 +75,15 @@ class PickCommand extends Command
      */
     protected function execute(InputInterface $input, OutputInterface $output)
     {
-        $output->writeln('Joind.in Winner Picker!');
+        $this->io = new SymfonyStyle($input, $output);
+
+        $this->io->title('Joind.in Winner Picker!');
 
         $this->tag = $input->getArgument('tag');
         $this->startDate = (new \DateTime($input->getArgument('start')))->format('Y-m-d');
         $this->endDate = (new \DateTime($input->getArgument('end')))->format('Y-m-d');
 
-        $output->writeln("Selecting from #$this->tag events between $this->startDate and $this->endDate");
+        $this->io->comment("Selecting from #$this->tag events between $this->startDate and $this->endDate");
 
         $this->getEvents($output);
         $this->getHosts();
@@ -135,10 +143,17 @@ class PickCommand extends Command
                 return !in_array($comment->user_display_name, $hosts);
             });
 
-            $output->writeln("<comment>$event->name</comment>");
+            $this->io->section($event->name);
+
+            $elements = [];
             foreach ($event->entries as $comment) {
-                $output->writeln("- $comment->user_display_name - " . substr(str_replace(PHP_EOL, ' ', $comment->comment ?: '<< no comment >>'), 0, 200));
+                $elements[] = vsprintf('%s - %s', [
+                    $comment->user_display_name,
+                    substr(str_replace(PHP_EOL, ' ', $comment->comment ?: '<< no comment >>'), 0, 200),
+                ]);
             }
+
+            $this->io->listing($elements);
 
             $this->entries = array_merge($this->entries, $event->entries);
         }
@@ -151,10 +166,10 @@ class PickCommand extends Command
     {
         $winner = $this->entries[rand(0, count($this->entries) - 1)];
 
-        $text = 'And the winner is...' . PHP_EOL;
-        $text .= ' - ' . $winner->user_display_name . ' - ' . substr(str_replace(PHP_EOL, ' ', $winner->comment ?: '<< no comment >>'), 0, 200) . PHP_EOL;
+        $text = '';
+        $text .= $winner->user_display_name . ' - ' . substr(str_replace(PHP_EOL, ' ', $winner->comment ?: '<< no comment >>'), 0, 200) . PHP_EOL;
         $text .= ' - ' . isset($winner->uri) ? $winner->uri : $winner->event_uri;
 
-        $output->writeln("<info>$text</info>");
+        $this->io->success($text);
     }
 }
